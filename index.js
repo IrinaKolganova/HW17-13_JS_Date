@@ -1,66 +1,66 @@
-let name=document.getElementById('name');
-let photo=document.getElementById('photo');
-let chat=document.getElementById('chat');
-let button=document.getElementById('button');
+let options={day:'numeric',
+month:'numeric',
+year:'numeric',
+timezone:'UTC',
+hour:'numeric',
+minute:'numeric'};
+let nameInput = document.getElementById('name');
+let check = document.getElementById('checkbox');
+let photo = document.getElementById('photo');
+let chat = document.getElementById('chat');
+let button = document.getElementById('button');
 
-let userName=document.getElementById('userName');
-let userPhoto=document.getElementById('userPhoto');
-let userChat=document.getElementById('userChat');
+let userName = document.getElementById('userName');
+let userPhoto = document.getElementById('userPhoto');
+let userChat = document.getElementById('userChat');
+let date = document.getElementById('date');
 
-function getUserName(){let newName = name.value[0].toUpperCase() + name.value.substring(1);
-return(userName.textContent=newName);
+let photoRandom = Math.round(Math.random()*10-4);
+
+function getCheck(){
+    if (check.checked|| document.getElementById('name').value === '') {userName.textContent = 'username';}
+    else{let newName = nameInput.value[0].toUpperCase() + nameInput.value.slice(1).toLowerCase();
+        return(userName.textContent=newName);
+         document.getElementById('userName').textContent = document.getElementById('name').value;}}
+
+function getDate(){
+   let nowDate=new Date();
+    date.textContent=nowDate.toLocaleString("ru", options);
 }
-function checkSpam(){let antiSpam=chat.value.replace(/viagra|XXX/gi, '***');
+
+function addPhoto(){
+    if (document.getElementById('photo').value !==''){ userPhoto.src = photo.value;}
+    else {
+        switch (photoRandom) {
+            case 1:
+                userPhoto.src = './img/img1.jpg';
+              break;
+            case 2:
+                userPhoto.src = './img/img2.jpg';
+              break;
+            case 3:
+                userPhoto.src = './img/img3.jpg';
+              break;
+            case 4:
+                userPhoto.src = './img/img4.jpg';
+              break;
+            case 5:
+                userPhoto.src = './img/img5.jpg';
+              break;
+            case 6:
+                userPhoto.src = './img/img6.jpg';
+              break;
+            default:
+                userPhoto.src = './img/img6.jpg';
+          }
+}}
+
+function checkSpam(){let antiSpam=chat.value.replace(/viagra|виагра|ххх|XXX/gi, '***');
 userChat.textContent = antiSpam;}
 function getComment(){
-    getUserName();
+    getCheck();
+    getDate()
     checkSpam();
-    userPhoto.src=photo.value;}
+    addPhoto();
+   }
 button.addEventListener('click',getComment);
-
-
-
-
-
-
-
-// button.addEventListener("click", getResult);
-
-// function getResult()
-
-// {
-//     let name = name.charAt(0).toUpperCase() + name.slice(1);
-//     // document.querySelector('.name');
-//     //     name = document.name.value;
-//     //     document.getElementById('name').innerHTML="name";
-
-
-// // вывести картинку по вложенной ссылке
-// let img=document.getElementById('photo');
-// img.src=document.getElementById('photo');
-// // Исключить слова Viagra и XXX в любом регистре
-
-// }
-
-
-
-
-// //Ниже - мои попытки придумать код...
-// // let name = document.querySelector('.name');
-// // function getName() {
-// //     document.querySelector('name')
-// //      };
-// //  getName();
-
- 
- 
-// // name.onclick=function getName() {
-// //          document.querySelector('name')
-// //          };
- 
-// //  getName()(что-то) 
-// // let userName=
-
-
-
-
